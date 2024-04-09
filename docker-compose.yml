@@ -1,0 +1,22 @@
+version: '3.5'
+services:
+  maplestory:
+    image:                                  atlas-engine:latest
+    environment:
+      DB_URL: ${DB_URL}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      LG_PORT_BASE: ${LG_PORT_BASE}
+      CH_PORT_BASE: ${CH_PORT_BASE}
+      WAIT_HOSTS: ${DB_DN}:3306
+    ports:
+      - '8484:8484'
+      - '7575:7575'
+      - '7576:7576'
+      - '7577:7577'
+    networks:
+      - internal-net
+    container_name: atlas-engine
+networks:
+  internal-net:
+    name: internal-net
